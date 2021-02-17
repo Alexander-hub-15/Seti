@@ -3,15 +3,12 @@ from django.contrib.auth.models import User
 
 
 class Message(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    id = models.AutoField(primary_key=True, unique=True)
     text = models.TextField('Текст', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Сообщение'
         verbose_name_plural = 'Сообщения'
-
-    def pidor(self):
-        print("ты пидр")
 
 
 class Document(models.Model):
