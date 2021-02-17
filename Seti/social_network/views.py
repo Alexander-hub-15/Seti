@@ -7,7 +7,7 @@ from social_network.forms import DocumentForm
 
 class AuthView(ListView):
     user = User
-    template_name = 'social_networks/auth.html'
+    template_name = 'social_networks/login.html'
 
 
 def model_form_upload(request):
