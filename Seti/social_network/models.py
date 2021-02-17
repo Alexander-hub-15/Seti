@@ -10,9 +10,6 @@ class Message(models.Model):
         verbose_name = 'Сообщение'
         verbose_name_plural = 'Сообщения'
 
-    def pidor(self):
-        print("ты пидр")
-
 
 class Document(models.Model):
     description = models.CharField(max_length=255, blank=True)
