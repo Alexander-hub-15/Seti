@@ -5,8 +5,6 @@ import social_network.routing
 
 application = ProtocolTypeRouter({
     'websocket': AuthMiddlewareStack(
-        URLRouter(
-            social_network.routing.websocket_urlpatterns
-        )
+        URLRouter(social_network.routing.websocket_urlpatterns)
     ),
 })

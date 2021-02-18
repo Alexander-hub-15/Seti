@@ -2,6 +2,9 @@ from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.contrib.auth.models import User
+from django.utils.safestring import mark_safe
+
+import json
 
 
 class AuthView(ListView):
@@ -15,3 +18,13 @@ def upload(request):
         fs = FileSystemStorage()
         fs.save(uploaded_file.name, uploaded_file)
     return render(request, 'social_networks/model_form_upload.html')
+
+
+def index(request):
+    return render(request, 'social_networks/base.html')
+
+
+def room(request, room_name):
+    return render(request, 'social_networks/room.html', {
+        'room_name_json': mark_safe(json.dumps(room_name))
+    })

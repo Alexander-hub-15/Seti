@@ -4,7 +4,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('upload/', views.model_form_upload, name='upload'),
+    path('upload/', views.upload, name='upload'),
+    path('', views.index),
+    path('<str:room_name>/', views.room, name='room'),
 ]
 
 if settings.DEBUG:
