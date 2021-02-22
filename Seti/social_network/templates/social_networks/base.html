@@ -8,7 +8,11 @@
     What chat room would you like to enter?<br/>
     <input id="room-name-input" type="text" size="100"/><br/>
     <input id="room-name-submit" type="button" value="Enter"/>
-
+    <p>
+        <a href="{% url 'inform_comp' %}">Информацию по компьютере</a><br>
+        <a href="{% url 'upload' %}">Загрузка</a>
+    </p>
+</body>
     <script>
         document.querySelector('#room-name-input').focus();
         document.querySelector('#room-name-input').onkeyup = function(e) {
@@ -22,5 +26,4 @@
             window.location.pathname = '/' + roomName + '/';
         };
     </script>
-</body>
 </html>

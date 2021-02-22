@@ -28,3 +28,11 @@ def room(request, room_name):
     return render(request, 'social_networks/room.html', {
         'room_name_json': mark_safe(json.dumps(room_name))
     })
+
+
+def inform_comp(request):
+    import platform
+    data = {
+        'inform': platform.processor()
+    }
+    return render(request, 'social_networks/inform_comp.html', data)

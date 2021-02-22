@@ -4,6 +4,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('inform_comp/', views.inform_comp, name='inform_comp'),
     path('upload/', views.upload, name='upload'),
     path('', views.index),
     path('<str:room_name>/', views.room, name='room'),
