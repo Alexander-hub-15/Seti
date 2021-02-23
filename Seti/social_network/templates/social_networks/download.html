@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Выгрузка</title>
+</head>
+<body>
+  {% for document in document_list %}
+
+     <a href="{{ document.document.url }}" download>
+         <p>
+         Скачать файл - {{ document.description }}
+         </p>
+     </a>
+
+  {% endfor %}
+</body>
+</html>

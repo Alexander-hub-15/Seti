@@ -1,3 +1,4 @@
+from aioredis.commands import generic
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
@@ -5,6 +6,8 @@ from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 
 import json
+
+from social_network.models import Document
 
 
 class AuthView(ListView):
@@ -18,6 +21,12 @@ def upload(request):
         fs = FileSystemStorage()
         fs.save(uploaded_file.name, uploaded_file)
     return render(request, 'social_networks/model_form_upload.html')
+
+
+class DownloadView(ListView):
+    model = Document
+    fields = ['description', 'document']
+    template_name = 'social_networks/download.html'
 
 
 def index(request):
