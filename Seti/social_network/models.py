@@ -1,5 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from time import time
+
+from django.utils.text import slugify
+
+
+def gen_slug(s):  # генерация слага
+    new_slug = slugify(s, allow_unicode=True)
+    return new_slug + '-' + str(int(time()))
 
 
 class Message(models.Model):
@@ -19,3 +27,22 @@ class Document(models.Model):
     class Meta:
         verbose_name = 'Документ'
         verbose_name_plural = 'Документы'
+
+
+class Questions(models.Model):
+    text = models.TextField(blank=True, max_length=1024)
+    slug = models.SlugField(max_length=150, blank=True, default='', unique=True)
+    date_pub = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = gen_slug(self.name_person)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return '{}'.format(self.name_person)
+
+    class Meta:
+        verbose_name = 'Вопрос'
+        verbose_name_plural = 'Вопросы'
+        ordering = ['-date_pub']
