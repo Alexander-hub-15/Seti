@@ -51,4 +51,4 @@ def posts(request):
     data = {
         'posts': Questions.objects.all()
     }
-    return render(request, 'social_networks/posts.html')
+    return render(request, 'social_networks/posts.html', data)
