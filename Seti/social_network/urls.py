@@ -8,6 +8,7 @@ urlpatterns = [
     path('inform_comp/', views.inform_comp, name='inform_comp'),
     path('upload/', views.upload, name='upload'),
     path('posts/', views.posts, name='post'),
+    path('create/', views.QuestionCreate.as_view(), name='create_post'),
     path('', views.index),
     path('<str:room_name>/', views.room, name='room'),
 ]

@@ -60,12 +60,12 @@ def posts(request):
 class QuestionCreate(View):
     def get(self, request):
         form = QuestionForm()
-        return render(request, 'social_networks/create.html.html', context={'form': form})
+        return render(request, 'social_networks/create.html', context={'form': form})
 
     def post(self, request):
         form = QuestionForm(request.POST)
 
         if form.is_valid():
             form.save()
-            return redirect('psosts')
-        return render(request, 'social_networks/create.html.html', context={'form': form})
+            return redirect('post')
+        return render(request, 'social_networks/create.html', context={'form': form})
