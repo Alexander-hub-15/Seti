@@ -57,15 +57,21 @@ def posts(request):
     return render(request, 'social_networks/posts.html', data)
 
 
-class QuestionCreate(View):
-    def get(self, request):
-        form = QuestionForm()
-        return render(request, 'social_networks/create.html', context={'form': form})
-
-    def post(self, request):
+def create_question(request):
+    error = ''
+    if request.method == 'POST':
         form = QuestionForm(request.POST)
-
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.save()
             return redirect('post')
-        return render(request, 'social_networks/create.html', context={'form': form})
+        else:
+            error = 'Форма была неверной'
+
+    form = QuestionForm()
+
+    data = {
+        'form': form,
+        'error': error
+    }
+    return render(request, 'social_networks/create.html', data)

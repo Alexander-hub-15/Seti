@@ -12,12 +12,9 @@ class UploadFileForm(forms.Form):
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Questions
-        fields = ['slug', 'text']
+        fields = ['text']
         widgets = {
-            # 'name_person': forms.TextInput(attrs={'class': 'form-control'}),
-            'slug': forms.TextInput(attrs={'class': 'form-control'}),
-            'text': forms.Textarea(attrs={'class': 'form-control'}),
-            # 'name_cat': forms.MultiValueField(attrs={'class': 'form-control'})
+            'text': forms.Textarea(),
         }
 
     def clean_slug(self):
