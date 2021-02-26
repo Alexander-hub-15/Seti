@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 
 import json
 
-from social_network.models import Document
+from social_network.models import Document, Questions
 
 
 class AuthView(ListView):
@@ -45,3 +45,10 @@ def inform_comp(request):
         'inform': platform.processor()
     }
     return render(request, 'social_networks/inform_comp.html', data)
+
+
+def posts(request):
+    data = {
+        'posts': Questions.objects.all()
+    }
+    return render(request, 'social_networks/posts.html')

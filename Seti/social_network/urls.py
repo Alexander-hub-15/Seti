@@ -7,6 +7,7 @@ urlpatterns = [
     path('download/', views.DownloadView.as_view(), name='download'),
     path('inform_comp/', views.inform_comp, name='inform_comp'),
     path('upload/', views.upload, name='upload'),
+    path('posts/', views.posts, name='post'),
     path('', views.index),
     path('<str:room_name>/', views.room, name='room'),
 ]
