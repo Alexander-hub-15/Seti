@@ -7,21 +7,16 @@
 
 {% block content %}
 
-    <form action="{% url 'posts' %}" method="post">
+    <form action="{% url 'post' %}" method="post">
         {% csrf_token %}
 
         {% for field in form %}
-            <div class="form-group">
-                 {% if field.errors %}
-                    <div class="alert alert-danger">
-                        {{ field.errors }}
-                    </div>
+                {% if field.errors %}
+                    {{ field.errors }}
                 {% endif %}
 
                 {{ field.label }}
                 {{ field }}
-            </div>
-
         {% endfor %}
 
 
