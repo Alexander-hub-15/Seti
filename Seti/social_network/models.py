@@ -5,9 +5,8 @@ from time import time
 from django.utils.text import slugify
 
 
-def gen_slug(s):  # генерация слага
-    new_slug = slugify(s, allow_unicode=True)
-    return new_slug + '-' + str(int(time()))
+def gen_slug():  # генерация слага
+    return str(int(time()))
 
 
 class Message(models.Model):
@@ -36,11 +35,11 @@ class Questions(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = gen_slug(self.name_person)
+            self.slug = gen_slug()
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return '{}'.format(self.name_person)
+        return '{}'.format(self.text)
 
     class Meta:
         verbose_name = 'Вопрос'
