@@ -7,6 +7,9 @@ from django.utils.safestring import mark_safe
 
 import json
 
+from django.views.generic.base import View
+
+from social_network.forms import QuestionForm
 from social_network.models import Document, Questions
 
 
@@ -52,3 +55,17 @@ def posts(request):
         'posts': Questions.objects.all()
     }
     return render(request, 'social_networks/posts.html')
+
+
+class QuestionCreate(View):
+    def get(self, request):
+        form = QuestionForm()
+        return render(request, 'social_networks/create.html.html', context={'form': form})
+
+    def post(self, request):
+        form = QuestionForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('psosts')
+        return render(request, 'social_networks/create.html.html', context={'form': form})
