@@ -7,6 +7,9 @@ from django.utils.safestring import mark_safe
 
 import json
 
+from django.views.generic.base import View
+
+from social_network.forms import QuestionForm
 from social_network.models import Document, Questions
 
 
