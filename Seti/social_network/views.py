@@ -1,13 +1,10 @@
-from aioredis.commands import generic
-from django.core.files.storage import FileSystemStorage
-from django.shortcuts import render, redirect
-from django.views.generic import ListView
-from django.contrib.auth.models import User
-from django.utils.safestring import mark_safe
-
 import json
 
-from django.views.generic.base import View
+from django.contrib.auth.models import User
+from django.core.files.storage import FileSystemStorage
+from django.shortcuts import render, redirect
+from django.utils.safestring import mark_safe
+from django.views.generic import ListView
 
 from social_network.forms import QuestionForm
 from social_network.models import Document, Questions
